@@ -9,11 +9,14 @@
 /* Begin PBXBuildFile section */
 		270E734C499A71982EE08353 /* Pods_NewsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9AC6392255A2B79D4D45E41 /* Pods_NewsKit.framework */; };
 		93D023CB8D4B127538503E42 /* Pods_NewsKit_NewsKitTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8649F92C21A20D7E9CC3E521 /* Pods_NewsKit_NewsKitTests.framework */; };
+		A28B0222291A8737000D7036 /* Service.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B0221291A8737000D7036 /* Service.swift */; };
+		A28B0225291A8784000D7036 /* ServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B0224291A8784000D7036 /* ServiceProtocol.swift */; };
+		A28B0228291A87DE000D7036 /* XModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B0227291A87DE000D7036 /* XModelResponse.swift */; };
+		A28B022A291A881F000D7036 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = A28B0229291A881F000D7036 /* NetworkService.swift */; };
 		B755F4E429071C730072D791 /* NewsKit.docc in Sources */ = {isa = PBXBuildFile; fileRef = B755F4E329071C730072D791 /* NewsKit.docc */; };
 		B755F4EA29071C730072D791 /* NewsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B755F4DF29071C730072D791 /* NewsKit.framework */; };
 		B755F4EF29071C730072D791 /* NewsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755F4EE29071C730072D791 /* NewsKitTests.swift */; };
 		B755F4F029071C730072D791 /* NewsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B755F4E229071C730072D791 /* NewsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		B755F4FA29071CA20072D791 /* Dummy.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755F4F929071CA20072D791 /* Dummy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -31,12 +34,15 @@
 		7D655DB20F0086B8CC39BE41 /* Pods-NewsKit.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsKit.debug.xcconfig"; path = "Target Support Files/Pods-NewsKit/Pods-NewsKit.debug.xcconfig"; sourceTree = "<group>"; };
 		8649F92C21A20D7E9CC3E521 /* Pods_NewsKit_NewsKitTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsKit_NewsKitTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9D985C0AE4D35470A11230B5 /* Pods-NewsKit.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsKit.release.xcconfig"; path = "Target Support Files/Pods-NewsKit/Pods-NewsKit.release.xcconfig"; sourceTree = "<group>"; };
+		A28B0221291A8737000D7036 /* Service.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Service.swift; sourceTree = "<group>"; };
+		A28B0224291A8784000D7036 /* ServiceProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServiceProtocol.swift; sourceTree = "<group>"; };
+		A28B0227291A87DE000D7036 /* XModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = XModelResponse.swift; sourceTree = "<group>"; };
+		A28B0229291A881F000D7036 /* NetworkService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		B755F4DF29071C730072D791 /* NewsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = NewsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B755F4E229071C730072D791 /* NewsKit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NewsKit.h; sourceTree = "<group>"; };
 		B755F4E329071C730072D791 /* NewsKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NewsKit.docc; sourceTree = "<group>"; };
 		B755F4E929071C730072D791 /* NewsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B755F4EE29071C730072D791 /* NewsKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsKitTests.swift; sourceTree = "<group>"; };
-		B755F4F929071CA20072D791 /* Dummy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Dummy.swift; sourceTree = "<group>"; };
 		C699A8BCD9BB0C2D49A037BE /* Pods-NewsKit-NewsKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsKit-NewsKitTests.release.xcconfig"; path = "Target Support Files/Pods-NewsKit-NewsKitTests/Pods-NewsKit-NewsKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9AC6392255A2B79D4D45E41 /* Pods_NewsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -62,6 +68,30 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A28B0220291A8726000D7036 /* Enum */ = {
+			isa = PBXGroup;
+			children = (
+				A28B0221291A8737000D7036 /* Service.swift */,
+			);
+			path = Enum;
+			sourceTree = "<group>";
+		};
+		A28B0223291A877A000D7036 /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				A28B0224291A8784000D7036 /* ServiceProtocol.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		A28B0226291A87D1000D7036 /* Response */ = {
+			isa = PBXGroup;
+			children = (
+				A28B0227291A87DE000D7036 /* XModelResponse.swift */,
+			);
+			path = Response;
+			sourceTree = "<group>";
+		};
 		B755F4D529071C730072D791 = {
 			isa = PBXGroup;
 			children = (
@@ -85,9 +115,12 @@
 		B755F4E129071C730072D791 /* NewsKit */ = {
 			isa = PBXGroup;
 			children = (
+				A28B0226291A87D1000D7036 /* Response */,
+				A28B0223291A877A000D7036 /* Protocol */,
+				A28B0220291A8726000D7036 /* Enum */,
 				B755F4E229071C730072D791 /* NewsKit.h */,
 				B755F4E329071C730072D791 /* NewsKit.docc */,
-				B755F4F929071CA20072D791 /* Dummy.swift */,
+				A28B0229291A881F000D7036 /* NetworkService.swift */,
 			);
 			path = NewsKit;
 			sourceTree = "<group>";
@@ -297,8 +330,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B755F4FA29071CA20072D791 /* Dummy.swift in Sources */,
+				A28B0228291A87DE000D7036 /* XModelResponse.swift in Sources */,
 				B755F4E429071C730072D791 /* NewsKit.docc in Sources */,
+				A28B0222291A8737000D7036 /* Service.swift in Sources */,
+				A28B022A291A881F000D7036 /* NetworkService.swift in Sources */,
+				A28B0225291A8784000D7036 /* ServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +491,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -484,6 +521,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
