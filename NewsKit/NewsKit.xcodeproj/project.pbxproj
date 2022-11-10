@@ -17,6 +17,7 @@
 		B755F4EA29071C730072D791 /* NewsKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B755F4DF29071C730072D791 /* NewsKit.framework */; };
 		B755F4EF29071C730072D791 /* NewsKitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B755F4EE29071C730072D791 /* NewsKitTests.swift */; };
 		B755F4F029071C730072D791 /* NewsKit.h in Headers */ = {isa = PBXBuildFile; fileRef = B755F4E229071C730072D791 /* NewsKit.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B7EDE749291C904200939A3B /* AuthModelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7EDE748291C904200939A3B /* AuthModelResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		B755F4E329071C730072D791 /* NewsKit.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = NewsKit.docc; sourceTree = "<group>"; };
 		B755F4E929071C730072D791 /* NewsKitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NewsKitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B755F4EE29071C730072D791 /* NewsKitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewsKitTests.swift; sourceTree = "<group>"; };
+		B7EDE748291C904200939A3B /* AuthModelResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthModelResponse.swift; sourceTree = "<group>"; };
 		C699A8BCD9BB0C2D49A037BE /* Pods-NewsKit-NewsKitTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NewsKit-NewsKitTests.release.xcconfig"; path = "Target Support Files/Pods-NewsKit-NewsKitTests/Pods-NewsKit-NewsKitTests.release.xcconfig"; sourceTree = "<group>"; };
 		E9AC6392255A2B79D4D45E41 /* Pods_NewsKit.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NewsKit.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -88,6 +90,7 @@
 			isa = PBXGroup;
 			children = (
 				A28B0227291A87DE000D7036 /* XModelResponse.swift */,
+				B7EDE748291C904200939A3B /* AuthModelResponse.swift */,
 			);
 			path = Response;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				B755F4E429071C730072D791 /* NewsKit.docc in Sources */,
 				A28B0222291A8737000D7036 /* Service.swift in Sources */,
 				A28B022A291A881F000D7036 /* NetworkService.swift in Sources */,
+				B7EDE749291C904200939A3B /* AuthModelResponse.swift in Sources */,
 				A28B0225291A8784000D7036 /* ServiceProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -9,4 +9,5 @@ import Foundation
 
 enum Service {
     static let baseUrl = ""
+    static let authUrl = "https://nextjs-lowkeyboard.vercel.app/api/newsapi"
 }
