@@ -14,8 +14,8 @@ class KeychainManager {
     
     func save(value: String) {
         let query = [
-            kSecValueData: "eklenen deger".data(using: .utf8)!,
-            kSecAttrAccount: "kullanici adi",
+            kSecValueData: value.data(using: .utf8)!,
+            kSecAttrAccount: "username",
             kSecClass: kSecClassGenericPassword
         ] as CFDictionary
         
@@ -25,7 +25,7 @@ class KeychainManager {
     
     func read() {
         let query = [
-            kSecAttrAccount: "kullanici adi",
+            kSecAttrAccount: "username",
             kSecClass: kSecClassGenericPassword,
             kSecReturnData: true
         ] as CFDictionary

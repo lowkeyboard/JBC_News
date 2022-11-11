@@ -12,20 +12,31 @@ public class NetworkService: ServiceProtocol {
     
     public init() {}
         
+        
+    public func requestTopStories(authKey: String, success: @escaping (TopStoriesModel) -> Void, failure: @escaping (Error?) -> Void) {
+        let url = Service.newsUrl
+        
+        let params: [String:String] = [
+            "api_token": authKey
+        ]
+        
+            print("Sending request... \(url)")
+        
+        AF.request(url, method: .get, parameters: params).validate().responseDecodable(of: TopStoriesModel.self) { (model) in
+            guard let data = model.value else {
+                print(model.response ?? "")
+                return
+            }
+            success(data)
+        }
+
+    }
     
-    public func requestHeadlines(authApiKey: String) {
+    public func requestAllNews(authKey: String) {
         
     }
     
-    public func requestTopStories(authApiKey: String) {
-        
-    }
-    
-    public func requestAllNews(authApiKey: String) {
-        
-    }
-    
-    public func requestSimilarNews(authApiKey: String) {
+    public func requestSimilarNews(authKey: String) {
         
     }
     
@@ -43,14 +54,4 @@ public class NetworkService: ServiceProtocol {
         
     }
     
-    public func requestX(authApiKey: String, success: @escaping (XModelResponse) -> Void, failure: @escaping (Error?) -> Void) {
-        //implementation of method here.
-        
-//        guard let data = model.value else {
-//            print(model.response ?? "")
-//            return
-//        }
-//        success(data)
-
-    }
 }

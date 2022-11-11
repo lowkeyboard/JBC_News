@@ -19,6 +19,7 @@ end
 target 'NewsKit' do
   project 'NewsKit/NewsKit.project'
   newskit_pods
+  pod 'SnapKit', '~> 5.6.0'
   target 'NewsKitTests' do
    inherit! :complete
       # Pods for testing

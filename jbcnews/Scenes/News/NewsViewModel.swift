@@ -13,10 +13,14 @@ enum NewsViewRoute {
 
 protocol NewsViewModelOutputProtocol: AnyObject {
     var delegate: NewsViewModelDelegate? { get set }
+    func load()
+    func selectNews(at index: Int)
 }
 
 enum NewsViewModelOutput {
     case updateTitle(String)
+    case setLoading(Bool)
+    case showNewsList([NewsPresentation])
 }
 
 protocol NewsViewModelDelegate: AnyObject  {
@@ -28,17 +32,46 @@ protocol NewsViewModelDelegate: AnyObject  {
 
 final class NewsViewModel: NewsViewModelOutputProtocol {
     
+    weak var coordinator: FeedCoordinator?
     private let service: ServiceProtocol
     weak var delegate: NewsViewModelDelegate?
-    
+    private var news: [Datum] = []
+
     init(service: ServiceProtocol) {
         self.service = service
     }
     
 
+    
+    func load() {
+
+        notify(.updateTitle("Top News"))
+        notify(.setLoading(true))
+        
+        service.requestTopStories(authKey: "") { [weak self] results in
+            guard let self = self else { return }
+            self.notify(.setLoading(false))
+            self.news = results.data ?? []
+            let presentations = self.news.map({NewsPresentation(news: $0)})
+                self.notify(.showNewsList(presentations))
+
+        } failure: { error in
+            print(error ?? "Error occured with pokemon service.")
+        }
+
+
+    }
+
+    func selectNews(at index: Int) {
+        print("news at \(index) has selected")
+        self.coordinator?.navigateToDetail(index: index)
+
+    }
+
     private func notify(_ output: NewsViewModelOutput) {
         delegate?.handleViewModelOutput(output)
     }
+    
 
     
 
