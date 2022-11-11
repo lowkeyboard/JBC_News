@@ -9,7 +9,16 @@ import Alamofire
 
 public protocol ServiceProtocol {
 
-    func requestX( parameter: String, success: @escaping (_ model: XModelResponse) -> Void, failure: @escaping (_ error: Error?) -> Void )
+    func requestX( authKey: String, success: @escaping (_ model: XModelResponse) -> Void, failure: @escaping (_ error: Error?) -> Void )
+    
+    func requestHeadlines(authApiKey: String)
+    
+    func requestTopStories(authApiKey: String)
+    
+    func requestAllNews(authApiKey: String)
+    
+    func requestSimilarNews(authApiKey: String)
+
     
     func requestAuth( success: @escaping (DataResponse<String, AFError>) -> Void, failure: @escaping (Error?) -> Void)
     

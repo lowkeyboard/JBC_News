@@ -8,5 +8,5 @@
 import Foundation
 
 public struct AuthModelResponse: Codable {
-    let apiKey: String
+    let newsApiKey: String
 }

@@ -6,12 +6,26 @@
 //
 
 import UIKit
+import NewsKit
 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
+    
+    var keychainManager: KeychainManager = KeychainManager()
+    var networkService: NetworkService = NetworkService()
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        
+        networkService.requestAuth { authResponse in
+            print(authResponse.result.map({ authKey in
+                self.keychainManager.save(value: authKey)
+            }))
+            self.keychainManager.save(value: "")
+        } failure: { err in
+            print(err)
+        }
+
         return true
     }
 
