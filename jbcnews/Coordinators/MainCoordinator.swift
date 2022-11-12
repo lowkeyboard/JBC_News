@@ -6,12 +6,14 @@
 //
 
 import UIKit
+import NewsKit
 
 class MainCoordinator: Coordinator {
     var navigationController: UINavigationController?
     var children: [Coordinator]?
     var childCoordinators = [Coordinator]()
     var feedCoordinator: FeedCoordinator?
+    let service = NetworkService()
 
     init(navigationController: UINavigationController, feedCoordinator: FeedCoordinator) {
         self.navigationController = navigationController
@@ -29,6 +31,7 @@ class MainCoordinator: Coordinator {
     func navigateToNews() {
         let vc = NewsViewController()
 //        vc.viewModel = HomeViewModel(service: service, coordinator: feedCoordinator!)
+        vc.viewModel = NewsViewModel(service: service)
 
         navigationController?.pushViewController(vc, animated: true)
 

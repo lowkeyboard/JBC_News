@@ -11,7 +11,7 @@ enum NewsViewRoute {
     case detail(NewsDetailViewModelProtocol)
 }
 
-protocol NewsViewModelOutputProtocol: AnyObject {
+protocol NewsViewModelProtocol: AnyObject {
     var delegate: NewsViewModelDelegate? { get set }
     func load()
     func selectNews(at index: Int)
@@ -30,7 +30,7 @@ protocol NewsViewModelDelegate: AnyObject  {
 
 
 
-final class NewsViewModel: NewsViewModelOutputProtocol {
+final class NewsViewModel: NewsViewModelProtocol {
     
     weak var coordinator: FeedCoordinator?
     private let service: ServiceProtocol
@@ -48,10 +48,10 @@ final class NewsViewModel: NewsViewModelOutputProtocol {
         notify(.updateTitle("Top News"))
         notify(.setLoading(true))
         
-        service.requestTopStories(authKey: "") { [weak self] results in
+        service.requestTopStories(authKey: "WCCZ8CWNffEeeZEfHzbuW1vdc5sXFYQRmhOmNHnC") { [weak self] results in
             guard let self = self else { return }
             self.notify(.setLoading(false))
-            self.news = results.data ?? []
+            self.news = results.data
             let presentations = self.news.map({NewsPresentation(news: $0)})
                 self.notify(.showNewsList(presentations))
 
