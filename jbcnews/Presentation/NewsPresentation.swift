@@ -12,10 +12,12 @@ final class NewsPresentation: NSObject {
 
     let title: String
     let detail: String
+    let imageUrl: String
 
-    init(title: String, detail: String) {
+    init(title: String, detail: String, imageUrl: String) {
         self.title = title
         self.detail = detail
+        self.imageUrl = imageUrl
         super.init()
     }
 
@@ -28,7 +30,7 @@ final class NewsPresentation: NSObject {
 extension NewsPresentation {
 
     convenience init(news: Datum) {
-        self.init(title: news.title ?? "title",
-                  detail: news.datumDescription ?? "datum desc")
+        self.init(title: news.title ,
+                  detail: news.datumDescription, imageUrl: news.imageURL )
     }
 }

@@ -14,7 +14,6 @@ class NewsTableCell: UITableViewCell {
     var label: UILabel!
     private let customImage: UIImageView = UIImageView()
 
-    private let randomImage: String = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/"
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String? ) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -29,7 +28,7 @@ class NewsTableCell: UITableViewCell {
 
         label.snp.makeConstraints { (make) in
             make.left.equalToSuperview().offset(40)
-            make.right.equalToSuperview().offset(80)
+            make.right.equalToSuperview().offset(40)
             make.top.equalToSuperview().offset(10)
             make.bottom.equalToSuperview().offset(-10)
         }
@@ -49,7 +48,7 @@ class NewsTableCell: UITableViewCell {
 
     func saveModel(news: NewsPresentation, index: Int) {
         label.text = news.title
-        customImage.af.setImage(withURL: URL(string: randomImage + "\(index+1).png" ) ?? URL(string: randomImage + "3.png")!)
+        customImage.af.setImage(withURL: URL(string: news.imageUrl )!)
     }
 
 }

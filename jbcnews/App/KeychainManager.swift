@@ -23,7 +23,7 @@ class KeychainManager {
         print(durum)
     }
     
-    func read() {
+    func read() -> String {
         let query = [
             kSecAttrAccount: "username",
             kSecClass: kSecClassGenericPassword,
@@ -31,12 +31,14 @@ class KeychainManager {
         ] as CFDictionary
         
         var ref: AnyObject? = nil
-        let durum = SecItemCopyMatching(query, &ref)
+        let status = SecItemCopyMatching(query, &ref)
+        var val = ""
         
-        if durum == 0 {
-            let deger = String(data: ref as! Data, encoding: .utf8)
-            print(deger)
+        if status == 0 {
+            val = String(data: ref as! Data, encoding: .utf8) ?? ""
         }
+        
+        return val
 
     }
 }

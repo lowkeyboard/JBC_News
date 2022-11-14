@@ -19,9 +19,7 @@ public class NetworkService: ServiceProtocol {
         let params: [String:String] = [
             "api_token": authKey
         ]
-        
-            print("Sending request... \(url)")
-        
+                
         AF.request(url, method: .get, parameters: params).validate().responseDecodable(of: TopStoriesModel.self) { (model) in
             guard let data = model.value else {
                 print(model.response ?? "")
