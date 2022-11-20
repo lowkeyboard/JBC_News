@@ -29,8 +29,9 @@ class NewsViewController: UIViewController {
         self.view.addSubview(homeTitle)
         makeTableView()
 
-        homeTitle.text = "News Library"
-        homeTitle.font = UIFont(name: "News Solid", size: 40)
+        homeTitle.text = "News"
+        homeTitle.font = UIFont(name: "Avenir Next Demi Bold", size: 30)
+        
         homeTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(50)
             make.left.equalTo(view).offset(10)
@@ -47,7 +48,8 @@ class NewsViewController: UIViewController {
         tableView.dataSource = self
         tableView.register(NewsTableCell.self, forCellReuseIdentifier: NewsTableCell.identifier)
         tableView.rowHeight = 100
-        tableView.separatorColor = .yellow
+        tableView.separatorInset.bottom = 16
+        
 
         tableView.snp.makeConstraints { make in
             make.top.equalTo(homeTitle.snp.bottom).offset(5)

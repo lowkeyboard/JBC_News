@@ -20,25 +20,30 @@ class NewsTableCell: UITableViewCell {
         self.configure()
     }
 
+    //TODO: Shadow and rounded look.
     func configure() {
-        self.backgroundColor = .white
         label = UILabel(frame: .zero)
         self.contentView.addSubview(label)
         self.contentView.addSubview(customImage)
-
+        
         label.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(40)
-            make.right.equalToSuperview().offset(40)
-            make.top.equalToSuperview().offset(10)
-            make.bottom.equalToSuperview().offset(-10)
+            make.left.equalToSuperview().offset(102)
+            make.right.equalToSuperview().offset(-16)
+            make.top.equalToSuperview().offset(16)
+            make.bottom.equalToSuperview().offset(-16)
         }
+        
+        label.numberOfLines = 2
+        label.font = UIFont(name: "Courier", size: 13)
 
         customImage.snp.makeConstraints { (make) in
-            make.height.equalTo(80)
-            make.top.equalTo(contentView)
-            make.left.equalTo(label).offset(200)
-            make.right.equalToSuperview()
+            make.height.equalTo(70)
+            make.width.equalTo(70)
+            make.top.equalTo(contentView).offset(16)
+            make.left.equalToSuperview().offset(16)
         }
+        
+        
 
     }
 
