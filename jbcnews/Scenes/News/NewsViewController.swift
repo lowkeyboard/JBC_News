@@ -49,6 +49,7 @@ class NewsViewController: UIViewController {
         tableView.register(NewsTableCell.self, forCellReuseIdentifier: NewsTableCell.identifier)
         tableView.rowHeight = 100
         tableView.separatorInset.bottom = 16
+        tableView.separatorStyle = .none
         
 
         tableView.snp.makeConstraints { make in
@@ -90,6 +91,8 @@ extension NewsViewController: UITableViewDataSource {
          let cell: NewsTableCell = tableView.dequeueReusableCell(withIdentifier: NewsTableCell.identifier) as! NewsTableCell
         let News = NewsList[indexPath.row]
         cell.saveModel(news: News, index: indexPath.row)
+        
+        
 
         return cell
     }
