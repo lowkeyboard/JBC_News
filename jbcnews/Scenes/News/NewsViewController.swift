@@ -30,7 +30,7 @@ class NewsViewController: UIViewController {
         makeTableView()
 
         homeTitle.text = "News"
-        homeTitle.font = UIFont(name: "Avenir Next Demi Bold", size: 30)
+        homeTitle.font = UIFont(name: "Kanit-Medium", size: 30)
         
         homeTitle.snp.makeConstraints { make in
             make.top.equalToSuperview().offset(50)

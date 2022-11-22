@@ -34,7 +34,7 @@ class NewsTableCell: UITableViewCell {
         }
         
         label.numberOfLines = 2
-        label.font = UIFont(name: "Courier", size: 13)
+        label.font = UIFont(name: "Kanit-Medium", size: 13)
 
         customImage.snp.makeConstraints { (make) in
             make.height.equalTo(70)
@@ -53,7 +53,7 @@ class NewsTableCell: UITableViewCell {
 
     func saveModel(news: NewsPresentation, index: Int) {
         label.text = news.title
-        customImage.af.setImage(withURL: URL(string: news.imageUrl )!)
+        customImage.af.setImage(withURL: URL(string: news.imageUrl) ?? URL(string: "https://www.washingtonpost.com/wp-apps/imrs.php?src=https://arc-anglerfish-washpost-prod-washpost.s3.amazonaws.com/public/C5QHOVSEN6ZEFI3A3KDXGY65R4.jpg&w=1440")!)
     }
 
 }
