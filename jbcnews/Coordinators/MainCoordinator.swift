@@ -8,42 +8,52 @@
 import UIKit
 import NewsKit
 
-class MainCoordinator: Coordinator {
-    var navigationController: UINavigationController?
-    var children: [Coordinator]?
+protocol FlowProtocol: Coordinator {
+    func showOnboardingFlow()
+    func showInAppFlow()
+}
+
+class MainCoordinator: FlowProtocol {
+    weak var finishDelegate: CoordinatorFinishDelegate? = nil
+    var navigationController: UINavigationController
     var childCoordinators = [Coordinator]()
-    var feedCoordinator: FeedCoordinator?
+    var type: CoordinatorType { .app }
+    
     let service = NetworkService()
 
-    init(navigationController: UINavigationController, feedCoordinator: FeedCoordinator) {
+    required init(_ navigationController: UINavigationController) {
         self.navigationController = navigationController
-        self.feedCoordinator = feedCoordinator
     }
 
     func start() {
+        //TODO: add isOnboardingCompleted and set flows accordingly
+        showOnboardingFlow()
+    }
+    
+    func showOnboardingFlow() {
         let vc = OnboardViewController()
         vc.coordinator = self
-        navigationController?.pushViewController(vc, animated: false)
+        navigationController.pushViewController(vc, animated: false)
+    }
+    
+    func showInAppFlow() {
+        let tabCoordinator = TabCoordinator.init(navigationController)
+        tabCoordinator.finishDelegate = self
+        tabCoordinator.start()
+        childCoordinators.append(tabCoordinator)
+        
 
     }
 
 
     func navigateToNews() {
         let vc = NewsViewController()
-//        vc.viewModel = HomeViewModel(service: service, coordinator: feedCoordinator!)
         vc.viewModel = NewsViewModel(service: service)
 
-        navigationController?.pushViewController(vc, animated: true)
+        navigationController.pushViewController(vc, animated: true)
 
     }
 
-    // details
-    func navigateToNewsDetail() {
-        let child = FeedCoordinator(navigationController: navigationController!)
-        child.parentCoordinator = self
-        childCoordinators.append(child)
-        child.start()
-    }
 
     func childDidFinish(_ child: Coordinator?) {
         for (index, coordinator) in childCoordinators.enumerated() {
@@ -56,3 +66,23 @@ class MainCoordinator: Coordinator {
     }
 
 }
+
+extension MainCoordinator: CoordinatorFinishDelegate {
+    func coordinatorDidFinish(childCoordinator: Coordinator) {
+        childCoordinators = childCoordinators.filter({ $0.type != childCoordinator.type })
+
+        switch childCoordinator.type {
+        case .tab:
+            navigationController.viewControllers.removeAll()
+
+            showOnboardingFlow()
+        case .login:
+            navigationController.viewControllers.removeAll()
+
+            showInAppFlow()
+        default:
+            break
+        }
+    }
+}
+

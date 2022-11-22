@@ -10,7 +10,8 @@ import UIKit
 class OnboardViewController: UIViewController {
     var coordinator: MainCoordinator?
     let button = UIButton()
-    
+    var didSendEventClosure: ((OnboardViewController.Event) -> Void)?
+
     lazy var snapView: UIView = {
         let view = UIView()
         view.layer.cornerRadius = 20
@@ -61,14 +62,19 @@ class OnboardViewController: UIViewController {
             make.height.equalTo(60)
         }
         
-        snapBtn.addTarget(self, action: #selector(self.buttonAction(sender:)), for: .touchUpInside)
+        snapBtn.addTarget(self, action: #selector(buttonAction(sender:)), for: .touchUpInside)
     }
     
     @objc func buttonAction(sender: UIButton) {
       print("signUpbuttonAction tapped")
-        self.coordinator?.navigateToNews()
+        didSendEventClosure?(.login)
     }
 
-
-
 }
+
+extension OnboardViewController {
+    enum Event {
+        case login
+    }
+}
+

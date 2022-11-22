@@ -8,7 +8,7 @@
 import NewsKit
 
 enum NewsViewRoute {
-    case detail(NewsDetailViewModelProtocol)
+//    case detail(NewsDetailViewModelProtocol)
 }
 
 protocol NewsViewModelProtocol: AnyObject {
@@ -32,7 +32,6 @@ protocol NewsViewModelDelegate: AnyObject  {
 
 final class NewsViewModel: NewsViewModelProtocol {
     
-    weak var coordinator: FeedCoordinator?
     private let service: ServiceProtocol
     weak var delegate: NewsViewModelDelegate?
     private var news: [Datum] = []
@@ -67,7 +66,7 @@ final class NewsViewModel: NewsViewModelProtocol {
 
     func selectNews(at index: Int) {
         print("news at \(index) has selected")
-        self.coordinator?.navigateToDetail(index: index)
+        //self.coordinator?.navigateToDetail(index: index)
 
     }
 

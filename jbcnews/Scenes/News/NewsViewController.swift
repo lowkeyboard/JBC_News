@@ -15,6 +15,8 @@ class NewsViewController: UIViewController {
             viewModel.delegate = self
         }
     }
+    
+    var didSendEventClosure: ((NewsViewController.Event) -> Void)?
 
     var tableView: UITableView!
     private var NewsList: [NewsPresentation] = []
@@ -107,5 +109,11 @@ extension NewsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: false)
         viewModel.selectNews(at: indexPath.row)
+    }
+}
+
+extension NewsViewController {
+    enum Event {
+        case ready
     }
 }
