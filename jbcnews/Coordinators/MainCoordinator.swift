@@ -33,6 +33,12 @@ class MainCoordinator: FlowProtocol {
     func showOnboardingFlow() {
         let vc = OnboardViewController()
         vc.coordinator = self
+        vc.didSendEventClosure = { [weak self] event in
+            switch event {
+            case .onboard:
+                self?.showInAppFlow()
+            }
+        }
         navigationController.pushViewController(vc, animated: false)
     }
     
@@ -41,8 +47,6 @@ class MainCoordinator: FlowProtocol {
         tabCoordinator.finishDelegate = self
         tabCoordinator.start()
         childCoordinators.append(tabCoordinator)
-        
-
     }
 
 

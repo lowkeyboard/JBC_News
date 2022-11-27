@@ -67,14 +67,14 @@ class OnboardViewController: UIViewController {
     
     @objc func buttonAction(sender: UIButton) {
       print("signUpbuttonAction tapped")
-        didSendEventClosure?(.login)
+        didSendEventClosure?(.onboard)
     }
 
 }
 
 extension OnboardViewController {
     enum Event {
-        case login
+        case onboard
     }
 }
 
